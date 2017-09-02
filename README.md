@@ -9,10 +9,26 @@ common design patterns in Android.
 * 静态内部类模式：线程安全，也能保证单例对象的唯一性，同时延迟了单例的实例化，是推荐的实现方式  
 还可以通过枚举和容器实现  
 
-`Android中的单例模式`  
-WindowManagerService，ActivityManagerService，LayoutInflater Service，InputMethodManager Service等
-
-
-
-
+`Android中的单例模式`  
+`WindowManagerService，ActivityManagerService，LayoutInflater Service，InputMethodManager Service`等都是以容器方式创建  
+```
+private static final HashMap<String, ServiceFetcher> SYSTEM_SERVICE_MAP =
+            new HashMap<String, ServiceFetcher>();
+// register map
+    private static void registerService(String serviceName, ServiceFetcher fetcher) {
+        if (!(fetcher instanceof StaticServiceFetcher)) {
+            fetcher.mContextCacheIndex = sNextPerContextServiceCacheIndex++;
+        }
+        SYSTEM_SERVICE_MAP.put(serviceName, fetcher);
+    }
+// initialization just once
+        registerService(LAYOUT_INFLATER_SERVICE, new ServiceFetcher() {
+                public Object createService(ContextImpl ctx) {
+                    return PolicyManager.makeNewLayoutInflater(ctx.getOuterContext());
+                }});
+// get the instance                
+    public Object getSystemService(String name) {
+        ServiceFetcher fetcher = SYSTEM_SERVICE_MAP.get(name);
+        return fetcher == null ? null : fetcher.getService(this);
+    }
 
