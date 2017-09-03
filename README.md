@@ -4,14 +4,12 @@ common design patterns in Android.
 
 ## Singleton
 构造函数不对外开放，只有一个静态方法返回单例类对象，需确保在多线程下保持单例类对象只有一个，并在反序列化时不会重新构建对象  
-**懒汉模式**：使用时才初始化，一定程度上节约资源，但是第一次加载需要实例化，且每次调用需要同步，开销较大，不建议使用  
-**Double Check Lock模式**：第一层判断为了不必要的同步，第二层为了在null的情况下创建实例；优点是解决了资源消耗，多余同步和线程安全问题，但是在某些情况下存在DCL失效情况  
-**静态内部类模式**：线程安全，也能保证单例对象的唯一性，同时延迟了单例的实例化，是推荐的实现方式  
+* 懒汉模式：使用时才初始化，一定程度上节约资源，但是第一次加载需要实例化，且每次调用需要同步，开销较大，不建议使用  
+* Double Check Lock模式：第一层判断为了不必要的同步，第二层为了在null的情况下创建实例；优点是解决了资源消耗，多余同步和线程安全问题，但是在某些情况下存在DCL失效情况  
+* 静态内部类模式：线程安全，也能保证单例对象的唯一性，同时延迟了单例的实例化，是推荐的实现方式  
 还可以通过枚举和容器实现  
 
-`Android中的应用`  
-大量存在，比如  
-`WMS，AMS，LayoutInflater Service，InputMethodManager Service`   等都是以容器方式创建  
+Android：`WMS，AMS，LayoutInflater Service，InputMethodManager Service`   等都是以容器方式创建  
 ```
 private static final HashMap<String, ServiceFetcher> SYSTEM_SERVICE_MAP =
             new HashMap<String, ServiceFetcher>();
@@ -36,10 +34,9 @@ private static final HashMap<String, ServiceFetcher> SYSTEM_SERVICE_MAP =
 
 ## 观察者模式
 观察者模式定义了一个一对多的依赖关系，让一个或多个观察者对象监听一个主题对象。当被观察者状态发生改变时，需要通知相应的观察者，使这些观察者对象能够自动更新  
-**事件委托**：观察者和通知者互相不知道，由客户端来决定通知谁  
-**事件总线**：在一个Activity发送广播，另一个Activiy接收，比较麻烦，如果传递数据是类对象，还要序列化；在一个Activity，定义一个子线程处理任务，完成后必须用Handler或AsyncTask来更新UI，也比较麻烦；事件总线可以进一步简化Activity，Fragment，Service等组件间的交互，很大程度上降低了它们的耦合  
+* 事件委托：观察者和通知者互相不知道，由客户端来决定通知谁  
+* 事件总线：在一个Activity发送广播，另一个Activiy接收，比较麻烦，如果传递数据是类对象，还要序列化；在一个Activity，定义一个子线程处理任务，完成后必须用Handler或AsyncTask来更新UI，也比较麻烦；事件总线可以进一步简化Activity，Fragment，Service等组件间的交互，很大程度上降低了它们的耦合  
 
-`Android中的应用`  
-大量存在，比如`Broadcard Receiver`的注册机制；ListView里面Adapter的方法`notifyDataSetChanged`  
+Android：`Broadcard Receiver`的注册机制；ListView里面Adapter的方法`notifyDataSetChanged`  
 
 
