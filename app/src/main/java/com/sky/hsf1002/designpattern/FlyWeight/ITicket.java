@@ -6,6 +6,5 @@ package com.sky.hsf1002.designpattern.FlyWeight;
 
 
 public interface ITicket {
-
-    void showTicketInfo(String from, String to);
+    void showTicketInfo(String type);
 }

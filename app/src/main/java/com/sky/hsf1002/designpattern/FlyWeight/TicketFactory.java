@@ -10,20 +10,22 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class TicketFactory {
 
-    private static Map<String, Ticket> sTicketMap = new ConcurrentHashMap<String, Ticket>();
+    private static Map<String, ITicket> sTicketMap = new ConcurrentHashMap<String, ITicket>();
 
 
-    public static Ticket getTicket(String from, String to)
+    public static ITicket getTicket(String from, String to)
     {
         String key = from + "-" + to;
 
         if (sTicketMap.containsKey(key))
         {
+            System.out.println("use cache:   from " + from + "  to  " + to);
             return sTicketMap.get(key);
         }
         else
         {
             Ticket ticket = new Ticket(from, to);
+            System.out.println("new ticket:  from " + from + "  to  " + to);
             sTicketMap.put(key, ticket);
             return ticket;
         }

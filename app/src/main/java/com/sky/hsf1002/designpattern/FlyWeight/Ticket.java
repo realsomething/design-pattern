@@ -1,5 +1,7 @@
 package com.sky.hsf1002.designpattern.FlyWeight;
 
+import java.util.Random;
+
 /**
  * Created by temp on 17-9-12.
  */
@@ -15,8 +17,10 @@ public class Ticket implements ITicket {
         this.to = to;
     }
 
-    public void showTicketInfo(String from, String to) {
+    public void showTicketInfo(String type) {
         // TODO Auto-generated method stub
-        System.out.println("ticket from: " + from + "   to  " + to );
+        int price = new Random().nextInt(100);
+
+        System.out.println("ticket from " + from + "   to  " + to +",  type:  " + type + "  price:  " + price );
     }
 }
