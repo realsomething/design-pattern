@@ -40,3 +40,40 @@ private static final HashMap<String, ServiceFetcher> SYSTEM_SERVICE_MAP =
 Android：`Broadcard Receiver`的注册机制；ListView里面Adapter的方法`notifyDataSetChanged`  
 
 
+## 享元模式
+对象池的一种实现，适用于存在大量重复对象的场景，可显著的减少对象创建数量减少内存使用  
+* 可共享的、不变的状态为内部状态，经典实现会将内部状态作为键，对象作为值进行MAP存储，不可共享的、易变的状态为外部状态 
+* 需要分离内部、外部状态，使得系统变得复杂，而且外部状态不会随着内部状态改变而改变，会导致系统逻辑混乱  
+
+Android：`Message m = obtain();`对象池，并非享元模式的经典实现，简单的单链表    
+如果对象池为空创建对象，否则从对象池获取消息并删除结点  
+```
+    public static Message obtain() {
+        synchronized (sPoolSync) {
+            if (sPool != null) {
+                Message m = sPool;
+                sPool = m.next;
+                m.next = null;
+                m.flags = 0; // clear in-use flag
+                sPoolSize--;
+                return m;
+            }
+        }
+        return new Message();
+    }
+```
+当消息被消费（处理）后，则重新加入对象池 
+```
+    void recycleUnchecked() {
+        // Mark the message as in use while it remains in the recycled object pool.
+        // Clear out all other details.
+...
+        synchronized (sPoolSync) {
+            if (sPoolSize < MAX_POOL_SIZE) {
+                next = sPool;
+                sPool = this;
+                sPoolSize++;
+            }
+        }
+    }
+```
