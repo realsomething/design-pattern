@@ -108,6 +108,11 @@ activity.attach(appContext, this, getInstrumentation(), r.token,
     
 ```
 
+## 桥接模式-Bridge
+将抽象部分和实现部分分离，让他们都能独立的进行变化，事实上，任何多维度变化或树型之间的耦合都可以通过桥接模式来解耦  
+* 如果一个系统需要在构件的抽象变化角色和具体变化角色之间增加更多的灵活性，避免在两个层次之间建立静态的继承关系，可以通过桥接模式在抽象层建立一个关联关系  
+* 易于理解，却难以设计，所以应用不多，一个重要的原因是不容易对于抽象和实现恰到好处的进行分离  
+Android：`TextView, Button, CheckBox`等定义控件基本属性和行为的View和真正绘制他们的功能实现类如`DisplayList，HardwareLayer，Cavas`之间可以看做是桥接模式的应用，Adapter和AdapterView之间，Window和WindowManager之间也是  
 
 
 
