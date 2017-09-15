@@ -115,5 +115,25 @@ activity.attach(appContext, this, getInstrumentation(), r.token,
 
 Android：`TextView, Button, CheckBox`等定义控件基本属性和行为的View和真正绘制他们的功能实现类如`DisplayList，HardwareLayer，Cavas`之间可以看做是桥接模式的应用，Adapter和AdapterView之间，Window和WindowManager之间也是  
 
+## 装饰模式-Decorator
+使用一种对客户端透明的方式来动态的扩展对象的功能，同时也是继承关系的一种替代方案之一  
+* 使用场景：动态的给对象增加额外的职责，就增加功能来说，比生成子类更加灵活  
+* 和代理模式容易混淆，代理模式是给一个对象提供一个代理对象，并由代理对象来控制对原有对象的引用，但不对对象本身的功能进行增强  
+
+Android：`ContextWrapper`，ContextImpl是上帝对象Context的具体实现，ContextWrapper则扮演装饰者的角色，持有一个Context的对象  
+```
+public class ContextWrapper extends Context {
+    Context mBase;
+    public ContextWrapper(Context base) {
+        mBase = base;
+    }
+....
+    @Override
+    public void startActivity(Intent intent) {
+        mBase.startActivity(intent);
+    }
+```
+
+
 
 
