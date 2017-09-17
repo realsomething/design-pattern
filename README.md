@@ -147,5 +147,11 @@ Android：`ListView中的Adapter`，输入（item view自定义视图）有无�
 
 Android：`View和ViewGroup的嵌套组合`，ViewGroup或继承自ViewGroup的LinearLayout等控件作为容器可以包含TextView或其子类如Button、CheckBox等，然后反之不行，但是它们都继承自统一的抽象类View，且Android此处实现为安全的设计模式，若根据依赖倒置原则，按照透明的组合模式，叶节点（Button、TextView）和枝干节点（ViewGroup、LinearLayout）应有相同的结构（全部继承并实现根部抽象类View的方法），而叶节点不支持的方法则在类中进行判断识别   
 
+## 代理模式-Proxy
+也称委托模式，为其他对象提供一种代理以控制对这个对象的访问，当无法或不想直接访问某个对象或访问某个对象存在困难时可以通过一个代理对象来间接访问，为了保证客户端使用的透明性，委托对象和代理对象需要实现相同的接口，代理模式在现实中比比皆是，如让同事帮忙打饭，让律师帮忙打官司等  
+* 静态代理：代理者的代码由程序猿或通过一些自动化工具生成固定的代码再对其编译，运行前代理类的class编译文件就已经确定，只能为给定接口下的实现类做代理，如果接口不同就需要重新定义不同的代理类，较为复杂，但是更符合面向对象原则  
+* 动态代理：通过反射动态的生成代理者的对象，在code阶段不需要知道代理谁，在Java中可以通过动态代理接口InvocationHnadler实现，通过一个代理类来代理多个被代理类，其实质是对代理者与被代理者进行解耦    
+* 远程代理、虚拟代理、保护代理、智能引用这四种可独自应用于静态代理和动态代理，两者各自独立对的变化  
 
+Android：`ActivityManagerProxy代理类`，其代理的是ActivityManagerNative的子类ActivityManagerService，AMS是系统级服务并运行在独立的进程空间，而ActivityManagerProxy也运行于自己独立的进程空间，因此它们的通信通过Binder以跨进程方式进行，其实质是远程代理  
 
