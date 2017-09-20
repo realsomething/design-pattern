@@ -155,3 +155,8 @@ Android：`View和ViewGroup的嵌套组合`，ViewGroup或继承自ViewGroup的L
 
 Android：`ActivityManagerProxy代理类`，其代理的是ActivityManagerNative的子类ActivityManagerService，AMS是系统级服务并运行在独立的进程空间，而ActivityManagerProxy也运行于自己独立的进程空间，因此它们的通信通过Binder以跨进程方式进行，其实质是远程代理  
 
+
+## 中介者模式-Mediator
+也称调解者模式，包装了一系列对象相互作用的方式，使得这些对象不必相互明显作用，从而使他们可以松散耦合，将多对多的相互作用转化为一对多的相互作用，将系统从网状结构变成以调停者为中心的星型结构，降低了系统的复杂度，提高了可扩展性  
+Android：`Binder机制`、锁屏功能的`KeyguardViewMediator`定义了很多管理器（音频、闹钟、搜索...），也定义了很多方法来处理这些管理器的状态  
+
