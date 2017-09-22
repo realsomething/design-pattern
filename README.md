@@ -184,6 +184,14 @@ Android：`AsyncTask中多个方法的固定执行步骤 Execute->onPreExecute->
 Android：`数据库查询中的Cursor游标`，该游标实质是一个具体的迭代器，可用来遍历数据库查询结果集  
 
 
+## 备忘录模式-Memoto
+在不破坏封闭前提下，捕获一个对象的内部状态，并在对象之外保存这个状态，以后可将对象恢复到原先状态
+* 实现了信息的封装，使得用户无需知道状态的保存细节，多次保存可实现撤销、重做功能
+* 如果需要保存的对象过多，易消耗资源
+
+Android：`onSaveInstanceState和onRestoreInstanceState`，当系统存在“未经许可”时销毁了Activity，比如按了HOME键、长按HOME选择其他程序、按POWER关闭屏幕、切换屏幕方向、电话接入等，onSaveInstanceState就会执行  
+
+
 
 
 
