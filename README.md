@@ -192,18 +192,12 @@ Android：`数据库查询中的Cursor游标`，该游标实质是一个具体�
 Android：`onSaveInstanceState和onRestoreInstanceState`，当系统存在“未经许可”时销毁了Activity，比如按了HOME键、长按HOME选择其他程序、按POWER关闭屏幕、切换屏幕方向、电话接入等，onSaveInstanceState就会执行  
 
 
+## 解释器模式-Interpreter
+定义了一个表达式接口，通过该接口解释一个特定的上下文，实际中使用较少，我们很少需要自己构造一个语言的语法  
+* 灵活的扩展性，对文法规则进行扩展延伸时，只需增加相应的非终结符解释器，在构建抽象语法树时，使用新增的解释器对对象进行解析即可
+* 对于每条文法都要对应增加至少一个解释器，会生成大量的类，导致维护困难，复杂的文法不推荐使用解释器模式
 
-
-
-
-
-
-
-
-
-
-
-
+Android：`PMS对AndroidMenifest.xml的解析`
 
 
 
