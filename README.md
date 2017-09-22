@@ -176,3 +176,29 @@ Android：`注解`
 
 Android：`AsyncTask中多个方法的固定执行步骤 Execute->onPreExecute->donInBackground->onPostExecute`，`Activity的生命周期函数执行顺序 onCreate->onStart->onResume` 等  
  
+
+## 迭代器模式-Iterator
+也称游标模式，提供了一种方法顺序访问一个容器对象的各个元素，又不需要暴露该对象的内部表示，支持以不同方式去遍历一个容器对象，弱化了容器类与遍历算法之间的关系，几乎每种高级语言都有内置实现，开发者已经很少去实现了  
+
+
+Android：`数据库查询中的Cursor游标`，该游标实质是一个具体的迭代器，可用来遍历数据库查询结果集  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
