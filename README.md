@@ -1,5 +1,5 @@
 # design-pattern
-common design patterns in Android.
+common design patterns in Android.   
 
 
 ## 单例模式-Singleton
@@ -200,12 +200,18 @@ Android：`onSaveInstanceState和onRestoreInstanceState`，当系统存在“未
 Android：`PMS对AndroidMenifest.xml的解析`
 
 ## 命令模式-Command
-将一个请求封装成一个对象，从而可以用不同的请求对客户进行参数化，对请求排队或记录请求日志，以及支持可撤销的操作   
+将一个请求封装成一个对象，从而可以用不同的请求对客户进行参数化，对请求排队或记录请求日志，以及支持可撤销的操作  
 * 更弱的耦合性，更灵活的控制性和更好的扩展性，可以方便的对命令进行记录、撤销和重做，其应用并不局限于GUI
 * 充分体现了几乎所有设计模式的通病，即大量衍生类的创建
 
 Android：`事件机制中底层逻辑对事件的转发处理`
 
+## 责任链模式-Chain of Responsibility
+使多个对象都有机会处理请求，从而避免了请求的发送者和接收者之间的耦合关系，将这些对象连成一条链，沿着这条链传递请求，直到有对象处理为止     
+* 多个对象可以处理一个请求，在请求处理者不明确的情况下向其中一个处理者提交请求
+* 对链中请求处理者的遍历，如果处理者太多，势必影响性能，特别是一些递归调用，需慎重  
+
+Android：`事件的分发处理`  
 
 
 
