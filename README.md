@@ -199,7 +199,12 @@ Android：`onSaveInstanceState和onRestoreInstanceState`，当系统存在“未
 
 Android：`PMS对AndroidMenifest.xml的解析`
 
+## 命令模式-Command
+将一个请求封装成一个对象，从而可以用不同的请求对客户进行参数化，对请求排队或记录请求日志，以及支持可撤销的操作   
+* 更弱的耦合性，更灵活的控制性和更好的扩展性，可以方便的对命令进行记录、撤销和重做，其应用并不局限于GUI
+* 充分体现了几乎所有设计模式的通病，即大量衍生类的创建
 
+Android：`事件机制中底层逻辑对事件的转发处理`
 
 
 
