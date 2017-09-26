@@ -3,12 +3,12 @@ package com.sky.hsf1002.designpattern.FactoryMethod;
 public class Client {
 
     public static void main(String[] args) {
-	    Factory factory = new FactoryCreateProductA();
+	    Factory factory = new FactoryCreateProduct();
 	    IProduct iProduct;
-		iProduct = factory.createProduct();
+		iProduct = factory.createProduct(ConcreteProductA.class);
 		iProduct.product();
-	    factory = new FactoryCreateProductB();
-		iProduct = factory.createProduct();
+
+        iProduct = factory.createProduct(ConcreteProductB.class);
 		iProduct.product();
     }
 }
