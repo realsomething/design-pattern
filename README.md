@@ -225,3 +225,7 @@ Android：`WIFI管理中的开关`
 
 Android：`属性动画的时间插值器` 等等  
 
+## 工厂方法模式-Factory Method
+定义一个用于创建对象的接口，让子类决定实例化哪个类，在任何需要生成复杂对象的地方都可以使用工厂方法模式，有时候可以用反射的方式更简洁的生产具体产品对象，此时只需在工厂方法的参数列表传入一个Class类来决定是哪个产品类  
+
+Android：`ArrayList和HastSet的iterator相当于一个工厂方法`，List和Set都继承于Collection接口，而Collection又继承于Iterable接口，其中唯一的方法iterator专为new对象而生，`onCreate也是一个工厂方法，其中的setContentView`方法可以传入不同的布局来初始化  
