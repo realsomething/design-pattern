@@ -229,3 +229,21 @@ Android：`属性动画的时间插值器` 等等  
 定义一个用于创建对象的接口，让子类决定实例化哪个类，在任何需要生成复杂对象的地方都可以使用工厂方法模式，有时候可以用反射的方式更简洁的生产具体产品对象，此时只需在工厂方法的参数列表传入一个Class类来决定是哪个产品类  
 
 Android：`ArrayList和HastSet的iterator相当于一个工厂方法`，List和Set都继承于Collection接口，而Collection又继承于Iterable接口，其中唯一的方法iterator专为new对象而生，`onCreate也是一个工厂方法，其中的setContentView`方法可以传入不同的布局来初始化  
+
+## 抽象工厂模式-Abstract Factory
+为创建一组相关或者是相互依赖的对象提供一个接口，而不需要指定他们的具体类  
+* 客户端使用抽象工厂创建需要的对象，而根本就不知道具体的实现者是谁，客户端只是面向产品的接口编程，同时基于接口和实现的分离，使得在切换产品类时更加灵活容易
+* 类爆炸性的增加，不太容易扩展新的产品类，每当增加一个产品类就需要修改抽象工厂，那么所有的具体工厂类都得修改  
+
+Android：不太多见，`MediaPlayer的四个Factory会生成四个不同的MediaPlayer的基类，而这四个类都继承于MediaPlayerBase'  
+```
+sp<MediaPlayerBase> MediaPlayerFactory::createPlayer(
+...
+    p = factory->createPlayer(pid);
+...
+class NuPlayerFactory : public MediaPlayerFactory::IFactory {
+...
+class TestPlayerFactory : public MediaPlayerFactory::IFactory {
+...
+
+```
