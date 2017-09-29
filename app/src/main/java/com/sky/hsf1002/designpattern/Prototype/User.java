@@ -9,7 +9,7 @@ public class User implements Cloneable{
     {
         this.name = "default";
         this.age = 1024;
-        this.address = new Address("beijing", "wudaokou", "UniverseCenter");
+        this.address = new Address("beijing", "wudaokou", "universecenter");
     }
 
     User(String name, int age, Address address)
@@ -21,7 +21,18 @@ public class User implements Cloneable{
 
     @Override
     protected Object clone() {
-        User userClone = new User();
+        //User userClone = new User();      // choose freely by efficiency
+        User userClone = null;
+        try {
+            userClone = (User)super.clone();
+            userClone.name = "default";
+            userClone.age = 1024;
+            userClone.address = (Address)address.clone();
+        }
+        catch (CloneNotSupportedException e)
+        {
+            e.printStackTrace();
+        }
 
         return userClone;
     }

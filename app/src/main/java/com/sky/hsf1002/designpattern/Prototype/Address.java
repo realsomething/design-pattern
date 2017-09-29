@@ -1,6 +1,6 @@
 package com.sky.hsf1002.designpattern.Prototype;
 
-public class Address {
+public class Address implements Cloneable{
     private String city;
     private String avenue;
     private String street;
@@ -15,5 +15,23 @@ public class Address {
     @Override
     public String toString() {
         return "city: " + city + ", avenue: " + avenue + ", street: " + street;
+    }
+
+    @Override
+    protected Object clone(){
+        Address address_clone = null;
+
+        try {
+            address_clone = (Address)super.clone();
+            address_clone.city = "beijing";
+            address_clone.avenue = "wudaokou";
+            address_clone.street = "universecenter";
+        }
+        catch (CloneNotSupportedException e)
+        {
+            e.printStackTrace();
+        }
+
+        return address_clone;
     }
 }
