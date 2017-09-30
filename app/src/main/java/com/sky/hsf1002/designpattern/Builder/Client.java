@@ -3,12 +3,12 @@ package com.sky.hsf1002.designpattern.Builder;
 public class Client {
 
     public static void main(String[] args) {
-        Computer computer = new MacComputer("Apple", "Mac");
-	    computer.setInput("keyboard").setOutput("display");
-	    System.out.println(computer);
+        Builder builder = new MacBuilder();
+        Computer computer = builder.buildInput("keyboard").buildOutput("display").create();
+        System.out.println(computer);
 
-        computer = new WindowComputer("Window", "Win10");
-        computer.setInput("mouse").setOutput("display");
+        builder = new WindowBuilder();
+        computer = builder.buildInput("mouse").buildOutput("display").create();
         System.out.println(computer);
     }
 }

@@ -6,8 +6,8 @@ public abstract class Computer {
     protected String input;
     protected String output;
 
-    abstract Computer setBoard(String board);
-    abstract Computer setOs(String os);
-    abstract Computer setInput(String input);
-    abstract Computer setOutput(String output);
+    abstract void setBoard(String board);
+    abstract void setOs(String os);
+    abstract void setInput(String input);
+    abstract void setOutput(String output);
 }

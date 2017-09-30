@@ -10,27 +10,23 @@ public class MacComputer extends Computer{
     }
 
     @Override
-    Computer setBoard(String board) {
+    void setBoard(String board) {
         this.board = board;
-        return this;
     }
 
     @Override
-    Computer setOs(String os) {
+    void setOs(String os) {
         this.os = os;
-        return this;
     }
 
     @Override
-    Computer setInput(String input) {
+    void setInput(String input) {
         this.input = input;
-        return this;
     }
 
     @Override
-    Computer setOutput(String output) {
+    void setOutput(String output) {
         this.output = output;
-        return this;
     }
 
     @Override
