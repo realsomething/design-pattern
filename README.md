@@ -235,7 +235,7 @@ Android：`ArrayList和HastSet的iterator相当于一个工厂方法`，List和S
 * 客户端使用抽象工厂创建需要的对象，而根本就不知道具体的实现者是谁，客户端只是面向产品的接口编程，同时基于接口和实现的分离，使得在切换产品类时更加灵活容易
 * 类爆炸性的增加，不太容易扩展新的产品类，每当增加一个产品类就需要修改抽象工厂，那么所有的具体工厂类都得修改  
 
-Android：不太多见，`MediaPlayer的四个Factory会生成四个不同的MediaPlayer的基类，而这四个类都继承于MediaPlayerBase'  
+Android：不太多见，`MediaPlayer的四个Factory会生成四个不同的MediaPlayer的基类，而这四个类都继承于MediaPlayerBase`    
 ```
 sp<MediaPlayerBase> MediaPlayerFactory::createPlayer(
 ...
@@ -257,3 +257,12 @@ class TestPlayerFactory : public MediaPlayerFactory::IFactory {
 * 本质是对象拷贝，使用原型模式可以解决构建复杂对象的资源消耗问题，在某些场景下可以提升创建对象的效率  
 
 Android：`ArrayList和Intent中的clone方法` 等等  
+
+## 创建者模式-Builder
+讲一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示，使用场景较多：  
+* 相同的方法，不同的执行顺序，产生不同的事件结果时 
+* 多个部件或零件，都可以装配到一个对象中，但是产生的运行结果又不相同
+* 产品类非常复杂，或者产品类中的调用顺序不同产生了不同的作用
+* 当初始化一个对象特别复杂，如参数多，且很多参数都有默认值  
+
+Android：非常常见，`AlertDialog.Builder` 等等   
