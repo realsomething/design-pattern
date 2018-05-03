@@ -1,6 +1,30 @@
 # design-pattern
 common design patterns in Android.   
 
+* [单例模式-Singleton](#单例模式-singleton)
+* [观察者模式-Observer](#观察者模式-observer)
+* [享元模式-FlyWeight](#享元模式-flyweight)
+* [外观模式-Facade](#外观模式-facade)
+* [桥接模式-Bridge](#桥接模式-bridge)
+* [装饰模式-Decorator](#装饰模式-decorator)
+* [适配器模式-Adapter](#适配器模式-adapter)
+* [组合模式-Composite](#组合模式-composite)
+* [代理模式-Proxy](#代理模式-proxy)
+* [中介者模式-Mediator](#中介者模式-mediator)
+* [访问者模式-Visitor](#访问者模式-visitor)
+* [模板方法模式-Template](#模板方法模式-template)
+* [迭代器模式-Iterator](#迭代器模式-iterator)
+* [备忘录模式-Memoto](#备忘录模式-memoto)
+* [解释器模式-Interpreter](#解释器模式-interpreter)
+* [命令模式-Command](#命令模式-command)
+* [责任链模式-Chain of Responsibility](#责任链模式-chain-of-responsibility)
+* [状态模式-State](#状态模式-state)
+* [策略模式-Strategy](#策略模式-strategy)
+* [工厂方法模式-Factory Method](#工厂方法模式-factory-method)
+* [抽象工厂模式-Abstract Factory](#抽象工厂模式-abstract-factory)
+* [原型模式-Prototype](#原型模式-prototype)
+* [创建者模式-Builder](#创建者模式-builder)
+
 
 ## 单例模式-Singleton
 构造函数不对外开放，只有一个静态方法返回单例类对象，需确保在多线程下保持单例类对象只有一个，并在反序列化时不会重新构建对象  
@@ -42,7 +66,7 @@ Android：`Broadcard Receiver`的注册机制；ListView里面Adapter的方法`n
 
 ## 享元模式-FlyWeight
 对象池的一种实现，适用于存在大量重复对象的场景，可显著的减少对象创建数量减少内存使用  
-* 可共享的、不变的状态为内部状态，经典实现会将内部状态作为键，对象作为值进行MAP存储，不可共享的、易变的状态为外部状态 
+* 可共享的、不变的状态为内部状态，经典实现会将内部状态作为键，对象作为值进行MAP存储，不可共享的、易变的状态为外部状态
 * 需要分离内部、外部状态，使得系统变得复杂，而且外部状态不会随着内部状态改变而改变，会导致系统逻辑混乱  
 
 Android：`Message m = obtain();`对象池，并非享元模式的经典实现，简单的单链表    
@@ -62,7 +86,7 @@ Android：`Message m = obtain();`对象池，并非享元模式的经典实现�
         return new Message();
     }
 ```
-当消息被消费（处理）后，则重新加入对象池 
+当消息被消费（处理）后，则重新加入对象池
 ```
     void recycleUnchecked() {
         // Mark the message as in use while it remains in the recycled object pool.
@@ -100,12 +124,12 @@ activity.attach(appContext, this, getInstrumentation(), r.token,
         }
         mBase = base;
     }      
-// 实际会调用ContextImpl的startActivity 
+// 实际会调用ContextImpl的startActivity
     public void startActivity(Intent intent) {
         mBase.startActivity(intent);
     }
-    
-    
+
+
 ```
 
 ## 桥接模式-Bridge
@@ -175,7 +199,7 @@ Android：`注解`
 * 会带来代码阅读的难度，会让用户觉得难以理解
 
 Android：`AsyncTask中多个方法的固定执行步骤 Execute->onPreExecute->donInBackground->onPostExecute`，`Activity的生命周期函数执行顺序 onCreate->onStart->onResume` 等  
- 
+
 
 ## 迭代器模式-Iterator
 也称游标模式，提供了一种方法顺序访问一个容器对象的各个元素，又不需要暴露该对象的内部表示，支持以不同方式去遍历一个容器对象，弱化了容器类与遍历算法之间的关系，几乎每种高级语言都有内置实现，开发者已经很少去实现了  
@@ -218,7 +242,7 @@ Android：`事件的分发处理`
 * 状态模式和策略模式的结构几乎完全一样，但它们的目的、本质却完全不同，状态模式的行为是平行的、不可替换的，策略模式的行为是彼此独立的、可以替换的；状态模式把对象的行为包装在不同的状态对象里，每个状态对象都有一个共同的抽象状态基类，状态模式的意图是让一个对象在其内部状态改变的时候其行为也随之改变  
 * 如果代码中大量的if-else或switch-case语句，则应重构，如果一个对象的行为取决于它的状态，并且它必须在运行时刻根据状态改变它的行为时，可以考虑使用状态模式，它提供更好的方法来组织与特定状态相关的代码，将繁琐的状态判断转换为结构清晰的状态类族
 
-Android：`WIFI管理中的开关` 
+Android：`WIFI管理中的开关`
 
 ## 策略模式-Strategy
 策略模式定义了一系列算法，并将每个算法封装起来，他们之间可以互相替换，针对同一问题的多种处理方式，仅仅是具体行为有差别   
@@ -260,9 +284,9 @@ Android：`ArrayList和Intent中的clone方法` 等等  
 
 ## 创建者模式-Builder
 讲一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示，使用场景较多：  
-* 相同的方法，不同的执行顺序，产生不同的事件结果时 
+* 相同的方法，不同的执行顺序，产生不同的事件结果时
 * 多个部件或零件，都可以装配到一个对象中，但是产生的运行结果又不相同
 * 产品类非常复杂，或者产品类中的调用顺序不同产生了不同的作用
 * 当初始化一个对象特别复杂，如参数多，且很多参数都有默认值  
 
-Android：非常常见，`AlertDialog.Builder` 等等   
+Android：非常常见，`AlertDialog.Builder` 等等  
